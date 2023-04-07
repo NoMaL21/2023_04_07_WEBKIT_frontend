@@ -1,8 +1,10 @@
 import React from 'react';
 import { ListItem, ListItemText, InputBase, Checkbox } from "@material-ui/core";
 
+
 function Todo(props) {
     const item = props.item;
+
     return (
         <ListItem>
             <Checkbox
@@ -17,8 +19,11 @@ function Todo(props) {
                     value={item.title}
                     multiline={true}
                     fullWidth={true}
+
                 />
             </ListItemText>
+
+
         </ListItem>
     );
 }
