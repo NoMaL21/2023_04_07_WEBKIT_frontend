@@ -1,12 +1,12 @@
 import React from "react";
-import {Grid, IconButton}from "@material-ui/core";
+import {Grid, IconButton, Typography}from "@material-ui/core";
 import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 
 class DeleteTodo extends React.Component {
     constructor(props){
         super(props);
         this.state = {item :{title:""}};
-        this.add = props.add;
+        this.deleteForCompleted = props.deleteForCompleted;
     }
 
     onButtonClick = ()=>{
@@ -16,10 +16,12 @@ class DeleteTodo extends React.Component {
 
     render(){
         return(
-            <Grid container>
-                <Grid xs={1} md={1} item>
-                    <IconButton aria-label="Delete"
-                    onClick={this.onButtonClick}>
+            <Grid container alignItems="center" spacing={1} justify="center">
+                <Grid item>
+                    <Typography variant="body1">완료한 일 삭제하기 :</Typography>
+                </Grid>
+                <Grid item>
+                    <IconButton aria-label="Delete" onClick={this.onButtonClick}>
                         <DeleteOutlined />
                     </IconButton>
                 </Grid>

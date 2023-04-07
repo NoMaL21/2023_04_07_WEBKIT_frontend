@@ -79,13 +79,14 @@ class App extends React.Component {
             </AppBar>
         )
 
+
         var todoListPage = (
             <div>
                 {navigationBar}
                 <Container maxWidth="md">
                     <AddTodo add={this.add} />
                     <div className="TodoList">{todoItems}</div>
-                    <div className="DeleteDoneBtn">{DeleteTodo}</div>
+                    <DeleteTodo deleteForCompleted={this.deleteForCompleted}/>
                 </Container>
             </div>
         );
