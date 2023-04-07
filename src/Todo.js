@@ -1,17 +1,26 @@
 import React from 'react';
+import { ListItem, ListItemText, InputBase, Checkbox } from "@material-ui/core";
 
 function Todo(props) {
+    const item = props.item;
     return (
-        <div className="Todo">
-            <input
-                type="checkbox"
-                id={props.item.id}   // item.id 값으로 렌더링하란 의미(JPX)
-                name={props.item.id}
-                checked={props.item.done}  // item.done 값으로 렌더링하란 의미
+        <ListItem>
+            <Checkbox
+                checked={item.done}
             />
-            <label for={props.item.id}>{props.item.title}</label>
-
-        </div>
+            <ListItemText>
+                <InputBase
+                    inputProps={{ "aria-label": "naked" }}
+                    type="text"
+                    id={item.id}
+                    name={item.id}
+                    value={item.title}
+                    multiline={true}
+                    fullWidth={true}
+                />
+            </ListItemText>
+        </ListItem>
     );
 }
+
 export default Todo;
