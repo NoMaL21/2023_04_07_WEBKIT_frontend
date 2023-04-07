@@ -1,6 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
+import DeleteTodo from "./DeleteTodo";
 import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography} from "@material-ui/core";
 import "./App.css";
 import { call, signout } from "./service/ApiService";
@@ -33,6 +34,18 @@ class App extends React.Component {
         );
     }
 
+    deleteForCompleted = () => {
+        const thisItems = this.state.items;
+        console.log("Before deleteForCompleted Items : ", this.state.items);
+        thisItems.map((e) => {
+            if (e.done === true) {
+                call("/todo", "DELETE", e).then((response) => 
+                    this.setState({ items: response.data })
+            );
+            }
+        });
+    }
+
     componentDidMount(){
         call("/todo","GET",null).then((response) => 
             this.setState({items:response.data, loading:false })
@@ -49,7 +62,7 @@ class App extends React.Component {
                 </List>
             </Paper>
         );
-
+    
         var navigationBar = (
             <AppBar position="static">
                 <Toolbar>
@@ -72,6 +85,7 @@ class App extends React.Component {
                 <Container maxWidth="md">
                     <AddTodo add={this.add} />
                     <div className="TodoList">{todoItems}</div>
+                    <div className="DeleteDoneBtn">{DeleteTodo}</div>
                 </Container>
             </div>
         );
