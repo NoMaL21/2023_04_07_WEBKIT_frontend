@@ -1,11 +1,12 @@
 import React from 'react';
-import Hello from './Hello';
+import Todo from './Todo';
 import './App.css';
 
 function App() {
+    const item = {id:0,title:"Hello World 1",done:true};
     return (
       <div className="App">
-        <Hello />
+        <Todo item={item}/>
       </div>
     );
 }
